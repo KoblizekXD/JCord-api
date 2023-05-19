@@ -2,6 +2,7 @@ package org.jcord.api.util;
 
 public final class Payload {
     private static String string;
+    private static boolean shouldClose;
 
     private Payload() {}
 
@@ -15,5 +16,11 @@ public final class Payload {
     }
     public static boolean empty() {
         return string == null;
+    }
+    public static boolean shouldClose() {
+        return shouldClose;
+    }
+    public static void close() {
+        shouldClose = true;
     }
 }
