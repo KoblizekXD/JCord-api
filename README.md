@@ -1,6 +1,5 @@
 # JCord API   
-JCord APIis a set of tools to make a development of JCord easier, it is not really recommended to use it without JCord,  
-but it is certainly possible.  
+JCord API is a set of tools to make a development of JCord easier, it is not really recommended to use it without JCord, but it is certainly possible.  
 
 ## Installation  
 API is automatically installed with JCord, but you can also install it separately.  
