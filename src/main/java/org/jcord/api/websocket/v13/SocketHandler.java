@@ -36,7 +36,7 @@ public class SocketHandler extends SimpleChannelInboundHandler<Object> {
     @Override
     protected void channelRead0(ChannelHandlerContext ctx, Object msg) throws Exception {
         Channel channel = ctx.channel();
-
+        
         if (!handshaker.isHandshakeComplete()) {
             try {
                 handshaker.finishHandshake(channel, (FullHttpResponse) msg);
@@ -47,6 +47,6 @@ public class SocketHandler extends SimpleChannelInboundHandler<Object> {
             }
             return;
         }
-
+        // TODO: Finish data obtain
     }
 }
