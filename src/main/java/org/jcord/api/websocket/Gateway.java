@@ -38,6 +38,9 @@ public final class Gateway implements IGateway {
     public static Gateway of(String token) {
         return new Gateway(token, API.V6);
     }
+    public static Gateway of(String token, API api) {
+        return new Gateway(token, api);
+    }
 
     @Override
     public void run() {
