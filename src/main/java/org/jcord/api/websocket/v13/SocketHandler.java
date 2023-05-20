@@ -9,18 +9,21 @@ import io.netty.channel.SimpleChannelInboundHandler;
 import io.netty.handler.codec.http.FullHttpResponse;
 import io.netty.handler.codec.http.websocketx.*;
 import io.netty.util.CharsetUtil;
+import org.jcord.api.util.ResponseHandler;
 import org.jcord.api.websocket.Gateway;
 
 public class SocketHandler extends SimpleChannelInboundHandler<Object> {
     private final WebSocketClientHandshaker handshaker;
+    private final ResponseHandler handler;
     private ChannelPromise handshakeFuture;
 
     public ChannelPromise handshakeFuture() {
         return handshakeFuture;
     }
 
-    public SocketHandler(ClientHandshaker handshaker) {
+    public SocketHandler(ClientHandshaker handshaker, ResponseHandler handler) {
         this.handshaker = handshaker;
+        this.handler = handler;
     }
     @Override
     public void handlerAdded(ChannelHandlerContext ctx) throws Exception {
@@ -61,7 +64,7 @@ public class SocketHandler extends SimpleChannelInboundHandler<Object> {
         }
         WebSocketFrame frame = (WebSocketFrame) msg;
         if (frame instanceof TextWebSocketFrame textFrame) {
-            String text = textFrame.text();
+            handler.receive(textFrame.text());
         } else if (frame instanceof CloseWebSocketFrame) {
             Gateway.LOGGER.warn("WebSocket requested closure, disconnecting...");
             channel.close();

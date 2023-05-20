@@ -1,8 +1,11 @@
-import org.jcord.api.client.DiscordClient;
+import org.jcord.api.websocket.Gateway;
 
 public class Main {
     public static void main(String[] args) {
-        DiscordClient client = new DiscordClient(args[0]);
-        client.get("/api/users/@me", true, System.out::println);
+        Gateway gateway = Gateway.of(args[0]);
+
+        gateway.run(content -> {
+            System.out.println(content);
+        });
     }
 }

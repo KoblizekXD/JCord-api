@@ -1,8 +1,8 @@
 package org.jcord.api.util;
 
 public interface IGateway {
-    void run();
-    default void runAsync() {
-        new Thread(this::run).start();
+    void run(ResponseHandler response);
+    default void runAsync(ResponseHandler response) {
+        new Thread(() -> run(response)).start();
     }
 }

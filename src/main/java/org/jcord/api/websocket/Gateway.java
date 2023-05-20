@@ -20,6 +20,7 @@ import org.jcord.api.discord.API;
 import org.jcord.api.discord.DURI;
 import org.jcord.api.util.IGateway;
 import org.jcord.api.util.Payload;
+import org.jcord.api.util.ResponseHandler;
 import org.jcord.api.util.SSL;
 import org.jcord.api.websocket.v13.ClientHandshaker;
 import org.jcord.api.websocket.v13.SocketHandler;
@@ -44,13 +45,13 @@ public final class Gateway implements IGateway {
     }
 
     @Override
-    public void run() {
+    public void run(ResponseHandler response) {
         URI uri = DURI.getURI(api);
         final SslContext ssl = new SSL().getSSL();
 
         EventLoopGroup group = new NioEventLoopGroup();
         try {
-            final SocketHandler handler = new SocketHandler(ClientHandshaker.newHandshaker(uri));
+            final SocketHandler handler = new SocketHandler(ClientHandshaker.newHandshaker(uri), response);
 
             Bootstrap bootstrap = new Bootstrap();
             bootstrap.group(group).channel(NioSocketChannel.class)
