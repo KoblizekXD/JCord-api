@@ -55,7 +55,7 @@ public final class Gateway implements IGateway {
             bootstrap.group(group).channel(NioSocketChannel.class)
                     .handler(new ChannelInitializer<SocketChannel>() {
                         @Override
-                        protected void initChannel(SocketChannel channel) throws Exception {
+                        protected void initChannel(SocketChannel channel) {
                             ChannelPipeline p = channel.pipeline();
                             if (ssl != null) {
                                 p.addLast(ssl.newHandler(channel.alloc(), "gateway.discord.gg", 443));
