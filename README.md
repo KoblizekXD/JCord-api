@@ -9,7 +9,19 @@ There are multiple ways to install it:
    2) Run `gradlew build`
 2) Downloading prebuilt source from [releases](https://github.com/KoblizekXD/JCord-api)
 3) JitPack:
-   1) NOT YET AVAILABLE
+   1) Add JitPack repository to your build file:
+   ```groovy
+   repositories {
+     ...
+     maven { url 'https://jitpack.io' }
+   }
+   ```
+   2) Add the dependency:
+   ```groovy
+    dependencies {
+      implementation 'com.github.KoblizekXD:JCord-api:VERSOION'
+    }
+    ```
 
 ## Contributing  
 Any contributions are welcome, just fork the repo and make a pull request.  
