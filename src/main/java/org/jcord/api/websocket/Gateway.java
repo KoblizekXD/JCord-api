@@ -26,6 +26,7 @@ import org.jcord.api.websocket.v13.SocketHandler;
 
 import java.net.URI;
 
+// TODO: heartbeating, identify with token
 public final class Gateway implements IGateway {
     public static final Logger LOGGER = LogManager.getLogger("JCord/Gateway");
     private final String token;
