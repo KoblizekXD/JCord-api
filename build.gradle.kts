@@ -4,7 +4,7 @@ plugins {
 }
 
 group = "org.jcord"
-version = "1.1"
+version = "v1.1"
 
 repositories {
     mavenCentral()
@@ -21,14 +21,4 @@ dependencies {
 
 tasks.test {
     useJUnitPlatform()
-}
-
-publishing {
-    publications {
-        create<MavenPublication>("maven") {
-            groupId = "org.jcord"
-            artifactId = "jcord-api"
-            version = "1.1"
-        }
-    }
 }
